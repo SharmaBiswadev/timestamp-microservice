@@ -42,6 +42,6 @@ app.route('/:date')
      })
       }
 
-    app.listen(8083,()=>{
+    app.listen(8083||process.env.PORT,()=>{
     	console.log("server is listening")
     })
