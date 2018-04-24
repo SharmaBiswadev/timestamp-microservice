@@ -11,16 +11,17 @@ app.route('/:date')
      //console.log(parseInt(timestamp),timestamp)
       let timestamp=req.params.date;
      if(!isNaN(timestamp)){
-     	let parsetime=new Date(timestamp)
+     	let parsetime=new Date(parseInt(timestamp))
      	console.log(parsetime);
      	if(parsetime=='Invalid Date'){
      		console.log("got invalid date")
      	 send_response(null,null,res);
      	}
-       let parsenaturaldate=(new Date(timestamp)).toDateString().split(" ").slice(1);
+       let parsenaturaldate=parsetime.toDateString().split(" ").slice(1);
        let year=parsenaturaldate.splice(2,0,',');
        year=parsenaturaldate.splice(1,0,' ')
        naturaldate=parsenaturaldate.join("")
+       console.log(naturaldate)
        unix=parseInt(timestamp)
        send_response(unix,naturaldate,res);
      }else {
